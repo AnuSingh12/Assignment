@@ -13,4 +13,10 @@ interface UserDAo {
     @Query("SELECT * FROM user_data ")
     fun getUserData() : Flow<List<UserData>>
 
+    @Query("SELECT * FROM user_data WHERE id = :id")
+    fun getSingleUser(id: String) : Flow<UserData>
+
+
+    @Query("UPDATE user_data SET is_selected = 1")
+    fun selected()
 }

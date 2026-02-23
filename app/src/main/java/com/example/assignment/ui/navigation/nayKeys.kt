@@ -1,5 +1,7 @@
 package com.example.assignment.ui.navigation
 
 object HomeKey
-object ImageKey
+data class UserDetailsKey(
+    val id : String
+)
 object UserListKey

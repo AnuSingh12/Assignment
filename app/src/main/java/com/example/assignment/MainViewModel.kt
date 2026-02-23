@@ -29,10 +29,11 @@ class MainViewModel(
                 UserData(
                     id = UUID.randomUUID().toString(),
                     name = "User $i",
-                    userName = "User $i",
+                    userName = "User Name $i",
                     email = "user$i@example.com",
                     phone = +91000000000,
-                    webSite = ""
+                    webSite = "",
+                    isSelected = listOf(true, false).random()
                 )
             )
         }

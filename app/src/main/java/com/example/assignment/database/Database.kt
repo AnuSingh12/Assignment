@@ -5,15 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.assignment.database.address.AddressDao
+import com.example.assignment.database.address.AddressData
 import com.example.assignment.database.user.UserDAo
 import com.example.assignment.database.user.UserData
 
 @Database(
     entities = [
         UserData::class,
-        AddressDao:: class
+        AddressData:: class
     ],
-    version = 5
+
+    version = 6,
+    exportSchema = false
 )
 abstract class UserDatabase : RoomDatabase() {
 
@@ -29,9 +32,8 @@ abstract class UserDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     UserDatabase::class.java,
-                    "user_databse"
-                )
-                    .build()
+                    "user_database"
+                ).fallbackToDestructiveMigration(false).build()
 
                 INSTANCE = instance
                 instance

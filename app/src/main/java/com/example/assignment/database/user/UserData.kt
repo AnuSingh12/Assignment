@@ -18,5 +18,7 @@ data class UserData(
     @ColumnInfo(name = "phone")
     val phone: Long,
     @ColumnInfo(name = "website")
-    val webSite: String
+    val webSite: String,
+    @ColumnInfo(name ="is_selected")
+    val isSelected : Boolean
 )

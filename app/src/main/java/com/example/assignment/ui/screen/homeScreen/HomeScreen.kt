@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomeScreen(onUserList: () -> Unit, onImage: () -> Unit) {
+fun HomeScreen(onUserList: () -> Unit) {
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -35,7 +35,7 @@ fun HomeScreen(onUserList: () -> Unit, onImage: () -> Unit) {
         }
         Button(
             onClick = {
-                onImage()
+//                onImage()
             }
         ) {
             Text(
