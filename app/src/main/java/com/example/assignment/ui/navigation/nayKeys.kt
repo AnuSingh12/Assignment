@@ -5,3 +5,4 @@ data class UserDetailsKey(
     val id : String
 )
 object UserListKey
+object CompanyKey

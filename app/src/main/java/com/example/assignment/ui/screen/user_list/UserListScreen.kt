@@ -1,14 +1,14 @@
 package com.example.assignment.ui.screen.user_list
 
-import android.R.attr.onClick
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
-import androidx.compose.material3.Switch
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -42,29 +42,17 @@ fun UserListScreen(
 
     ) {
         Row(
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = "List Screen",
                 modifier = Modifier
-                    .padding(12.dp)
+                    .padding(12.dp),
+                style = MaterialTheme.typography.titleLarge
             )
         }
-        Row(
 
-        ) {
-            Switch(
-                checked = true,
-                onCheckedChange = {}
-            )
-            Button(
-                onClick = {
-
-                }
-            ) {
-
-            }
-        }
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
@@ -73,10 +61,6 @@ fun UserListScreen(
                     id = data.id,
                     userName = data.userName,
                     name = data.name,
-                    checked = true,
-                    onChecked = {
-
-                    },
                     onNavigate = {navigateUserData(data.id)}
                 )
             }

@@ -6,22 +6,26 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.assignment.database.address.AddressDao
 import com.example.assignment.database.address.AddressData
+import com.example.assignment.database.company.CompanyDao
+import com.example.assignment.database.company.CompanyData
 import com.example.assignment.database.user.UserDAo
 import com.example.assignment.database.user.UserData
 
 @Database(
     entities = [
         UserData::class,
-        AddressData:: class
+        AddressData:: class,
+        CompanyData:: class
     ],
 
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class UserDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDAo
     abstract fun addressDao(): AddressDao
+    abstract fun companyDao(): CompanyDao
 
     companion object {
         @Volatile

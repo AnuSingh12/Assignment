@@ -16,8 +16,6 @@ fun UserListComponent(
     id: String ,
     userName : String,
     name : String,
-    checked : Boolean,
-    onChecked:() -> Unit,
     onNavigate:() -> Unit
 ){
     Row(
@@ -30,18 +28,7 @@ fun UserListComponent(
             },
         )
     ) {
-        Row(
-
-        ) {
-            Checkbox(
-                checked = checked,
-                onCheckedChange = {
-                    onChecked()
-                }
-            )
-        }
         Column(
-
         ) {
             Text(
                 text = userName

@@ -9,9 +9,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
 import com.example.assignment.database.UserDatabase
+import com.example.assignment.ui.navigation.CompanyKey
 import com.example.assignment.ui.navigation.HomeKey
 import com.example.assignment.ui.navigation.UserDetailsKey
 import com.example.assignment.ui.navigation.UserListKey
+import com.example.assignment.ui.screen.company.CompanyScreen
 import com.example.assignment.ui.screen.homeScreen.HomeScreen
 import com.example.assignment.ui.screen.user_details.UserDetailsScreen
 import com.example.assignment.ui.screen.user_list.UserListScreen
@@ -22,11 +24,13 @@ fun Navigation() {
     val database = UserDatabase.getDatabase(context)
     val userDao = database.userDao()
     val addressDao = database.addressDao()
+    val companyDao = database.companyDao()
 
     val viewmodel: MainViewModel = viewModel(
         factory = MainViewModelFactory(
             userDao,
-            addressDao
+            addressDao,
+            companyDao
         )
     )
 
@@ -40,18 +44,20 @@ fun Navigation() {
             when (key) {
                 is HomeKey -> NavEntry(key) {
                     HomeScreen(
-//                        onImage = {
-//                            backStack.add(UserDetailsKey())
-//                        },
                         onUserList = {
                             backStack.add(UserListKey)
                         },
+                        onCompany = {
+                            backStack.add(CompanyKey)
+                        }
                     )
 
                 }
 
                 is UserDetailsKey -> NavEntry(key) {
-                    UserDetailsScreen()
+                    UserDetailsScreen(
+                        id = key.id
+                    )
                 }
 
                 is UserListKey -> NavEntry(key) {
@@ -60,6 +66,10 @@ fun Navigation() {
                             backStack.add(UserDetailsKey(id = id))
                         }
                     )
+                }
+
+                is CompanyKey -> NavEntry(key) {
+                    CompanyScreen()
                 }
 
                 else -> NavEntry(Unit) { Text("Unknown") }
